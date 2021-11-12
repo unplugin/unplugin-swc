@@ -21,12 +21,9 @@
   },
   "devDependencies": {
     "@egoist/prettier-config": "0.1.0",
-    "@sucrase/jest-plugin": "2.2.0",
     "@swc/core": "^1.2.108",
-    "@types/jest": "27.0.2",
     "esbuild": "^0.13.13",
     "esbuild-register": "^3.1.2",
-    "jest": "27.3.1",
     "joycon": "^3.0.1",
     "jsonc-parser": "^3.0.0",
     "path-exists": "^5.0.0",
