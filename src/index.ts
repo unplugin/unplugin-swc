@@ -89,11 +89,12 @@ export default createUnplugin(
       },
 
       rollup: {
-        async renderChunk(code) {
+        async renderChunk(code, chunk) {
           if (minify) {
             const result = await transform(code, {
               sourceMaps: true,
               minify: true,
+              filename: chunk.fileName,
             })
             return {
               code: result.code,

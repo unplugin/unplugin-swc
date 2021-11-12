@@ -68,4 +68,26 @@ test('custom swcrc', async () => {
   assert.match(code, 'customPragma')
 })
 
+test('minify', async () => {
+  const bundle = await rollup({
+    input: fixture('minify/index.ts'),
+    plugins: [
+      swc.rollup({
+        minify: true,
+      }),
+    ],
+  })
+
+  const { output } = await bundle.generate({
+    format: 'cjs',
+    dir: fixture('minify/dist'),
+  })
+
+  const code = output[0].code
+  assert.match(
+    code,
+    `var Foo1=function Foo(){_classCallCheck(this,Foo);this.a=1}`,
+  )
+})
+
 test.run()
