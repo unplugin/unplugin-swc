@@ -1,7 +1,7 @@
 {
-  "name": "my-ts-lib",
+  "name": "unplugin-swc",
   "version": "0.0.0",
-  "description": "My awesome typescript library",
+  "description": "SWC plugin for Vite and Rollup",
   "publishConfig": {
     "access": "public"
   },
@@ -9,25 +9,35 @@
     "dist"
   ],
   "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "exports": {
-    "require": "./dist/index.js",
-    "import": "./dist/index.mjs"
-  },
   "types": "./dist/index.d.ts",
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts-resolve",
-    "test": "jest",
+    "build": "tsup src/index.ts --format cjs --dts",
+    "test": "uvu -r esbuild-register --ignore fixtures",
     "prepublishOnly": "npm run build"
   },
   "license": "MIT",
+  "dependencies": {
+    "unplugin": "^0.2.20"
+  },
   "devDependencies": {
     "@egoist/prettier-config": "0.1.0",
     "@sucrase/jest-plugin": "2.2.0",
+    "@swc/core": "^1.2.108",
     "@types/jest": "27.0.2",
+    "esbuild": "^0.13.13",
+    "esbuild-register": "^3.1.2",
     "jest": "27.3.1",
+    "joycon": "^3.0.1",
+    "jsonc-parser": "^3.0.0",
+    "path-exists": "^5.0.0",
     "prettier": "2.4.1",
+    "rollup": "^2.60.0",
     "tsup": "5.7.0",
-    "typescript": "4.4.4"
+    "typescript": "4.4.4",
+    "uvu": "^0.5.2",
+    "vite": "^2.6.14"
+  },
+  "peerDependencies": {
+    "@swc/core": "^1.2.108"
   }
 }
