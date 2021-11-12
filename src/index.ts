@@ -1,18 +1,31 @@
 import { createUnplugin } from 'unplugin'
+import { createFilter, FilterPattern } from '@rollup/pluginutils'
+
 import { transform, JscConfig, Options as SwcOptions } from '@swc/core'
 import { resolveId } from './resolve'
 import { getCompilerOptions } from './tsconfig'
 
-export type Options = SwcOptions & { tsconfigFile?: string | boolean }
+export type Options = SwcOptions & {
+  include?: FilterPattern
+  exclude?: FilterPattern
+  tsconfigFile?: string | boolean
+}
 
 export default createUnplugin(
-  ({ tsconfigFile, minify, ...options }: Options = {}) => {
+  ({ tsconfigFile, minify, include, exclude, ...options }: Options = {}) => {
+    const filter = createFilter(
+      include || /\.[jt]sx?$/,
+      exclude || /node_modules/,
+    )
+
     return {
       name: 'swc',
 
       resolveId,
 
       async transform(code, id) {
+        if (!filter(id)) return null
+
         const compilerOptions =
           tsconfigFile === false
             ? {}

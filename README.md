@@ -80,6 +80,20 @@ This plugin accepts all `@swc/core` options, except for `jsc` which should be co
 
 Disable the use of tsconfig file or specify a custom one.
 
+### `options.include`
+
+- Type: `RegExp`
+- Default: `/\.[jt]sx?$/`
+
+Files to include in the transpilation process.
+
+### `options.exclude`
+
+- Type: `RegExp`
+- Default: `/node_modules/`
+
+Files to exclude in the transpilation process.
+
 ## Sponsors
 
 [![sponsors](https://sponsors-images.egoist.sh/sponsors.svg)](https://github.com/sponsors/egoist)

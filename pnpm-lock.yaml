@@ -2,6 +2,7 @@ lockfileVersion: 5.3
 
 specifiers:
   '@egoist/prettier-config': 0.1.0
+  '@rollup/pluginutils': ^4.1.1
   '@swc/core': ^1.2.108
   esbuild: ^0.13.13
   esbuild-register: ^3.1.2
@@ -21,6 +22,7 @@ dependencies:
 
 devDependencies:
   '@egoist/prettier-config': 0.1.0
+  '@rollup/pluginutils': 4.1.1
   '@swc/core': 1.2.108
   esbuild: 0.13.13
   esbuild-register: 3.1.2_esbuild@0.13.13
@@ -87,6 +89,14 @@ packages:
     dependencies:
       '@nodelib/fs.scandir': 2.1.4
       fastq: 1.11.0
+    dev: true
+
+  /@rollup/pluginutils/4.1.1:
+    resolution: {integrity: sha512-clDjivHqWGXi7u+0d2r2sBi4Ie6VLEAzWMIkvJLnDmxoOhBYOTfzGbOQBA32THHm11/LiJbd01tJUpJsbshSWQ==}
+    engines: {node: '>= 8.0.0'}
+    dependencies:
+      estree-walker: 2.0.2
+      picomatch: 2.3.0
     dev: true
 
   /@swc/core-android-arm64/1.2.108:
@@ -574,6 +584,10 @@ packages:
   /escape-string-regexp/1.0.5:
     resolution: {integrity: sha1-G2HAViGQqN/2rjuyzwIAyhMLhtQ=}
     engines: {node: '>=0.8.0'}
+    dev: true
+
+  /estree-walker/2.0.2:
+    resolution: {integrity: sha512-Rfkk/Mp/DL7JVje3u18FxFujQlTNR2q6QfMSMB7AvCBx91NGj/ba3kCfza0f6dVDbw7YlRf/nDrn7pQrCCyQ/w==}
     dev: true
 
   /execa/5.0.0:
