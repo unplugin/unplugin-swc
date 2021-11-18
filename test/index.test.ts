@@ -1,7 +1,7 @@
 import { test } from 'uvu'
 import assert from 'uvu/assert'
 import path from 'path'
-import swc from '../src'
+import swc from '../dist'
 import { rollup } from 'rollup'
 
 const fixture = (...args: string[]) => path.join(__dirname, 'fixtures', ...args)

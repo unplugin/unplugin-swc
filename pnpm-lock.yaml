@@ -11,7 +11,7 @@ specifiers:
   path-exists: ^5.0.0
   prettier: 2.4.1
   rollup: ^2.60.0
-  tsup: 5.7.0
+  tsup: 5.7.2
   typescript: 4.4.4
   unplugin: ^0.2.20
   uvu: ^0.5.2
@@ -31,7 +31,7 @@ devDependencies:
   path-exists: 5.0.0
   prettier: 2.4.1
   rollup: 2.60.0
-  tsup: 5.7.0_typescript@4.4.4
+  tsup: 5.7.2_typescript@4.4.4
   typescript: 4.4.4
   uvu: 0.5.2
   vite: 2.6.14
@@ -1122,8 +1122,8 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
 
-  /tsup/5.7.0_typescript@4.4.4:
-    resolution: {integrity: sha512-Rt83NU4t3e0I2WyubR3doAAl/aijzNYVgWB8cZxem/6MfoutrOFssm6L8eMVIGvPPOYsDDVcAvXLwn+CUgeRAQ==}
+  /tsup/5.7.2_typescript@4.4.4:
+    resolution: {integrity: sha512-YxryYjhB54h8YUNlN7Oze9PnqcuN++vwrFW6qtjC1ve9eQPvzCJw0rN0WPOuEQXburwo+gtDid9C4eQZ6x/Yog==}
     hasBin: true
     peerDependencies:
       typescript: ^4.2.3
