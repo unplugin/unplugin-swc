@@ -9,7 +9,7 @@ specifiers:
   joycon: ^3.0.1
   jsonc-parser: ^3.0.0
   path-exists: ^5.0.0
-  prettier: 2.4.1
+  prettier: 2.5.1
   rollup: ^2.60.0
   tsup: 5.10.1
   typescript: 4.5.4
@@ -29,7 +29,7 @@ devDependencies:
   joycon: 3.0.1
   jsonc-parser: 3.0.0
   path-exists: 5.0.0
-  prettier: 2.4.1
+  prettier: 2.5.1
   rollup: 2.60.0
   tsup: 5.10.1_typescript@4.5.4
   typescript: 4.5.4
@@ -1107,8 +1107,8 @@ packages:
       source-map-js: 0.6.2
     dev: true
 
-  /prettier/2.4.1:
-    resolution: {integrity: sha512-9fbDAXSBcc6Bs1mZrDYb3XKzDLm4EXXL9sC1LqKP5rZkT6KRr/rf9amVUcODVXgguK/isJz0d0hP72WeaKWsvA==}
+  /prettier/2.5.1:
+    resolution: {integrity: sha512-vBZcPRUR5MZJwoyi3ZoyQlc1rXeEck8KgeC9AwwOn+exuxLxq5toTRDTSaVrXHxelDMHy9zlicw8u66yxoSUFg==}
     engines: {node: '>=10.13.0'}
     hasBin: true
     dev: true
