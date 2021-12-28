@@ -13,12 +13,12 @@ specifiers:
   rollup: ^2.60.0
   tsup: 5.10.1
   typescript: 4.5.4
-  unplugin: ^0.2.20
+  unplugin: ^0.3.0
   uvu: ^0.5.2
   vite: ^2.6.14
 
 dependencies:
-  unplugin: 0.2.20_rollup@2.60.0+vite@2.6.14
+  unplugin: 0.3.0_860dd7b723ded648c139514b4e8f5922
 
 devDependencies:
   '@egoist/prettier-config': 1.0.0
@@ -1294,13 +1294,16 @@ packages:
     hasBin: true
     dev: true
 
-  /unplugin/0.2.20_rollup@2.60.0+vite@2.6.14:
-    resolution: {integrity: sha512-CGnCaTqNjqeixpIlNEkpysxfR2hb4xv21xa4IURXnhYTfCp73UWuG0KcdanuhFJbwO5w+EGK4XaAaqdb/1vWbg==}
+  /unplugin/0.3.0_860dd7b723ded648c139514b4e8f5922:
+    resolution: {integrity: sha512-9yLlOo+XC4NdIRgpkDSHOAHkQDq2x4mbuVNO/eKVa3C8WTn5wWGfzEFfRJFL8euqnX3Gf7hEur0AhXxy+WSwkg==}
     peerDependencies:
+      esbuild: '>=0.13'
       rollup: ^2.50.0
       vite: ^2.3.0
       webpack: 4 || 5
     peerDependenciesMeta:
+      esbuild:
+        optional: true
       rollup:
         optional: true
       vite:
@@ -1308,6 +1311,7 @@ packages:
       webpack:
         optional: true
     dependencies:
+      esbuild: 0.14.8
       rollup: 2.60.0
       vite: 2.6.14
       webpack-virtual-modules: 0.4.3
