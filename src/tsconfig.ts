@@ -22,5 +22,5 @@ export const getCompilerOptions = async (
     path.dirname(file),
   )
 
-  return data.compilerOptions || {}
+  return data?.compilerOptions || {}
 }
