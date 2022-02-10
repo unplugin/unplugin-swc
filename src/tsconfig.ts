@@ -7,11 +7,25 @@ const joycon = new JoyCon()
 
 joycon.addLoader({
   test: /\.json$/,
-  async load(filepath: string) {
-    const content = await fs.promises.readFile(filepath, 'utf8')
-    return parse(content)
+  load(filepath: string) {
+    return readTsconfig(filepath)
   },
 })
+
+const readTsconfig = async (filepath: string) => {
+  const content = await fs.promises.readFile(filepath, 'utf8')
+  const parsed = parse(content) || {}
+
+  parsed.compilerOptions = parsed.compilerOptions || {}
+
+  if (typeof parsed.extends === 'string') {
+    const rpath = path.resolve(path.dirname(filepath), parsed.extends)
+    const parent = await readTsconfig(rpath)
+    parsed.compilerOptions = Object.assign(parent.compilerOptions, parsed.compilerOptions)
+  }
+
+  return parsed;
+}
 
 export const getCompilerOptions = async (
   file: string,
