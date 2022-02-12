@@ -17,12 +17,14 @@
   },
   "license": "MIT",
   "dependencies": {
+    "load-tsconfig": "^0.2.3",
     "unplugin": "^0.3.0"
   },
   "devDependencies": {
     "@egoist/prettier-config": "1.0.0",
     "@rollup/pluginutils": "^4.1.1",
     "@swc/core": "^1.2.108",
+    "@types/node": "^17.0.17",
     "esbuild": "0.14.9",
     "esbuild-register": "^3.1.2",
     "joycon": "^3.0.1",
