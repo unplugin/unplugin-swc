@@ -4,10 +4,11 @@ specifiers:
   '@egoist/prettier-config': 1.0.0
   '@rollup/pluginutils': ^4.1.1
   '@swc/core': ^1.2.108
+  '@types/node': ^17.0.17
   esbuild: 0.14.9
   esbuild-register: ^3.1.2
   joycon: ^3.0.1
-  jsonc-parser: ^3.0.0
+  load-tsconfig: ^0.2.3
   path-exists: ^5.0.0
   prettier: 2.5.1
   rollup: ^2.60.0
@@ -18,16 +19,17 @@ specifiers:
   vite: ^2.6.14
 
 dependencies:
-  unplugin: 0.3.0_860dd7b723ded648c139514b4e8f5922
+  load-tsconfig: 0.2.3
+  unplugin: 0.3.0_64478a4c84ae07405dfe873711e54e2d
 
 devDependencies:
   '@egoist/prettier-config': 1.0.0
   '@rollup/pluginutils': 4.1.1
   '@swc/core': 1.2.108
+  '@types/node': 17.0.17
   esbuild: 0.14.9
   esbuild-register: 3.1.2_esbuild@0.14.9
   joycon: 3.0.1
-  jsonc-parser: 3.0.0
   path-exists: 5.0.0
   prettier: 2.5.1
   rollup: 2.60.0
@@ -227,6 +229,10 @@ packages:
       '@swc/core-win32-x64-msvc': 1.2.108
     dev: true
 
+  /@types/node/17.0.17:
+    resolution: {integrity: sha512-e8PUNQy1HgJGV3iU/Bp2+D/DXh3PYeyli8LgIwsQcs1Ar1LoaWHSIT6Rw+H2rNJmiq6SNWiDytfx8+gYj7wDHw==}
+    dev: true
+
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
     dev: true
@@ -278,12 +284,12 @@ packages:
       fill-range: 7.0.1
     dev: true
 
-  /bundle-require/2.1.8_esbuild@0.14.8:
+  /bundle-require/2.1.8_esbuild@0.14.9:
     resolution: {integrity: sha512-oOEg3A0hy/YzvNWNowtKD0pmhZKseOFweCbgyMqTIih4gRY1nJWsvrOCT27L9NbIyL5jMjTFrAUpGxxpW68Puw==}
     peerDependencies:
       esbuild: '>=0.13'
     dependencies:
-      esbuild: 0.14.8
+      esbuild: 0.14.9
     dev: true
 
   /cac/6.7.12:
@@ -956,6 +962,11 @@ packages:
     resolution: {integrity: sha1-HADHQ7QzzQpOgHWPe2SldEDZ/wA=}
     dev: true
 
+  /load-tsconfig/0.2.3:
+    resolution: {integrity: sha512-iyT2MXws+dc2Wi6o3grCFtGXpeMvHmJqS27sMPGtV2eUu4PeFnG+33I8BlFK1t1NWMjOpcx9bridn5yxLDX2gQ==}
+    engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
+    dev: false
+
   /merge-stream/2.0.0:
     resolution: {integrity: sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w==}
     dev: true
@@ -1275,11 +1286,11 @@ packages:
       typescript:
         optional: true
     dependencies:
-      bundle-require: 2.1.8_esbuild@0.14.8
+      bundle-require: 2.1.8_esbuild@0.14.9
       cac: 6.7.12
       chokidar: 3.5.1
       debug: 4.3.1
-      esbuild: 0.14.8
+      esbuild: 0.14.9
       execa: 5.0.0
       globby: 11.0.4
       joycon: 3.0.1
@@ -1300,7 +1311,7 @@ packages:
     hasBin: true
     dev: true
 
-  /unplugin/0.3.0_860dd7b723ded648c139514b4e8f5922:
+  /unplugin/0.3.0_64478a4c84ae07405dfe873711e54e2d:
     resolution: {integrity: sha512-9yLlOo+XC4NdIRgpkDSHOAHkQDq2x4mbuVNO/eKVa3C8WTn5wWGfzEFfRJFL8euqnX3Gf7hEur0AhXxy+WSwkg==}
     peerDependencies:
       esbuild: '>=0.13'
@@ -1317,7 +1328,7 @@ packages:
       webpack:
         optional: true
     dependencies:
-      esbuild: 0.14.8
+      esbuild: 0.14.9
       rollup: 2.60.0
       vite: 2.6.14
       webpack-virtual-modules: 0.4.3
