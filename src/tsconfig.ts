@@ -1,25 +1,11 @@
 import path from 'path'
-import JoyCon from 'joycon'
 import { loadTsConfig } from 'load-tsconfig'
 
-const joycon = new JoyCon()
-
-joycon.addLoader({
-  test: /\.json$/,
-  load(filepath: string) {
-    const loaded = loadTsConfig(path.dirname(filepath))
-    return loaded?.data;
-  },
-})
-
-export const getCompilerOptions = async (
+export const getCompilerOptions = (
   file: string,
   _tsconfigPath?: string,
 ) => {
-  const { data } = await joycon.load(
-    [_tsconfigPath || 'tsconfig.json'],
-    path.dirname(file),
-  )
-
-  return data?.compilerOptions || {}
+  const filepath = path.join(path.dirname(file), _tsconfigPath || 'tsconfig.json')
+  const loaded = loadTsConfig(filepath)
+  return loaded?.data?.compilerOptions || {}
 }

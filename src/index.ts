@@ -29,7 +29,7 @@ export default createUnplugin(
         const compilerOptions =
           tsconfigFile === false
             ? {}
-            : await getCompilerOptions(
+            : getCompilerOptions(
                 id,
                 tsconfigFile === true ? undefined : tsconfigFile,
               )
