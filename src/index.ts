@@ -1,9 +1,9 @@
 import { createUnplugin } from 'unplugin'
 import { createFilter, FilterPattern } from '@rollup/pluginutils'
+import { loadTsConfig } from 'load-tsconfig'
 
 import { transform, JscConfig, Options as SwcOptions } from '@swc/core'
 import { resolveId } from './resolve'
-import { getCompilerOptions } from './tsconfig'
 
 export type Options = SwcOptions & {
   include?: FilterPattern
@@ -29,10 +29,10 @@ export default createUnplugin(
         const compilerOptions =
           tsconfigFile === false
             ? {}
-            : await getCompilerOptions(
+            : loadTsConfig(
                 id,
                 tsconfigFile === true ? undefined : tsconfigFile,
-              )
+              )?.data?.compilerOptions || {}
 
         const isTs = /\.tsx?$/.test(id)
 
