@@ -1,3 +1,4 @@
+import path from 'path';
 import { createUnplugin } from 'unplugin'
 import { createFilter, FilterPattern } from '@rollup/pluginutils'
 import { loadTsConfig } from 'load-tsconfig'
@@ -30,7 +31,7 @@ export default createUnplugin(
           tsconfigFile === false
             ? {}
             : loadTsConfig(
-                id,
+                path.dirname(id),
                 tsconfigFile === true ? undefined : tsconfigFile,
               )?.data?.compilerOptions || {}
 
