@@ -3,13 +3,15 @@
     "target": "es2020",
     "module": "esnext",
     "strict": true,
+    "jsx": "preserve",
+    "jsxFactory": "customJsxFactory",
     "esModuleInterop": true,
     "moduleResolution": "node",
     "skipLibCheck": true,
     "noUnusedLocals": true,
     "noImplicitAny": true,
     "allowJs": true,
-    "resolveJsonModule": true
-  },
-  "exclude": ["dist"]
+    "resolveJsonModule": true,
+    "experimentalDecorators": false
+  }
 }
