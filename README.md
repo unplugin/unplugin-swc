@@ -94,6 +94,12 @@ Files to include in the transpilation process.
 
 Files to exclude in the transpilation process.
 
+### `options.jsc`
+
+- Type: `object`
+
+Custom [jsc](https://swc.rs/docs/configuration/compilation) options to merge with the default one.
+
 ## Sponsors
 
 [![sponsors](https://sponsors-images.egoist.sh/sponsors.svg)](https://github.com/sponsors/egoist)

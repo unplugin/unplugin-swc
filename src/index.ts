@@ -1,4 +1,5 @@
-import path from 'path';
+import path from 'path'
+import defu from 'defu'
 import { createUnplugin } from 'unplugin'
 import { createFilter, FilterPattern } from '@rollup/pluginutils'
 import { loadTsConfig } from 'load-tsconfig'
@@ -37,7 +38,7 @@ export default createUnplugin(
 
         const isTs = /\.tsx?$/.test(id)
 
-        const jsc: JscConfig = {
+        let jsc: JscConfig = {
           parser: {
             syntax: isTs ? 'typescript' : 'ecmascript',
           },
@@ -67,6 +68,14 @@ export default createUnplugin(
             legacyDecorator: true,
             decoratorMetadata: compilerOptions.emitDecoratorMetadata,
           })
+        }
+
+        if (compilerOptions.target) {
+          jsc.target = compilerOptions.target
+        }
+
+        if (options.jsc) {
+          jsc = defu(options.jsc, jsc)
         }
 
         const result = await transform(code, {
