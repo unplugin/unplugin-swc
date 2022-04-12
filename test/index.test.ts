@@ -1,14 +1,14 @@
-import { test } from 'uvu'
-import assert from 'uvu/assert'
-import path from 'path'
-import swc from '../dist'
-import { rollup } from 'rollup'
+import { test } from "uvu"
+import assert from "uvu/assert"
+import path from "path"
+import swc from "../dist"
+import { rollup } from "rollup"
 
-const fixture = (...args: string[]) => path.join(__dirname, 'fixtures', ...args)
+const fixture = (...args: string[]) => path.join(__dirname, "fixtures", ...args)
 
-test('rollup', async () => {
+test("rollup", async () => {
   const bundle = await rollup({
-    input: fixture('rollup/index.ts'),
+    input: fixture("rollup/index.ts"),
     plugins: [
       swc.rollup({
         tsconfigFile: false,
@@ -17,8 +17,8 @@ test('rollup', async () => {
   })
 
   const { output } = await bundle.generate({
-    format: 'cjs',
-    dir: fixture('rollup/dist'),
+    format: "cjs",
+    dir: fixture("rollup/dist"),
   })
 
   assert.is(
@@ -34,24 +34,24 @@ exports.foo = foo;
   )
 })
 
-test('read tsconfig', async () => {
+test("read tsconfig", async () => {
   const bundle = await rollup({
-    input: fixture('read-tsconfig/index.tsx'),
+    input: fixture("read-tsconfig/index.tsx"),
     plugins: [swc.rollup()],
   })
 
   const { output } = await bundle.generate({
-    format: 'cjs',
-    dir: fixture('read-tsconfig/dist'),
+    format: "cjs",
+    dir: fixture("read-tsconfig/dist"),
   })
 
   const code = output[0].code
-  assert.match(code, 'customJsxFactory')
+  assert.match(code, "customJsxFactory")
 })
 
-test('custom swcrc', async () => {
+test("custom swcrc", async () => {
   const bundle = await rollup({
-    input: fixture('custom-swcrc/index.tsx'),
+    input: fixture("custom-swcrc/index.tsx"),
     plugins: [
       swc.rollup({
         tsconfigFile: false,
@@ -60,17 +60,17 @@ test('custom swcrc', async () => {
   })
 
   const { output } = await bundle.generate({
-    format: 'cjs',
-    dir: fixture('custom-swcrc/dist'),
+    format: "cjs",
+    dir: fixture("custom-swcrc/dist"),
   })
 
   const code = output[0].code
-  assert.match(code, 'customPragma')
+  assert.match(code, "customPragma")
 })
 
-test('minify', async () => {
+test("minify", async () => {
   const bundle = await rollup({
-    input: fixture('minify/index.ts'),
+    input: fixture("minify/index.ts"),
     plugins: [
       swc.rollup({
         minify: true,
@@ -79,14 +79,15 @@ test('minify', async () => {
   })
 
   const { output } = await bundle.generate({
-    format: 'cjs',
-    dir: fixture('minify/dist'),
+    format: "cjs",
+    dir: fixture("minify/dist"),
   })
 
   const code = output[0].code
+  console.log(code)
   assert.match(
     code,
-    `var Foo1=function Foo(){_classCallCheck(this,Foo);this.a=1}`,
+    `var Foo=function Foo(){_classCallCheck(this,Foo);this.a=1}`,
   )
 })
 
