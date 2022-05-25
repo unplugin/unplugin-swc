@@ -36,7 +36,7 @@
     "path-exists": "^5.0.0",
     "prettier": "2.5.1",
     "rollup": "^2.60.0",
-    "tsup": "5.12.5",
+    "tsup": "5.12.9",
     "typescript": "4.5.4",
     "uvu": "^0.5.2",
     "vite": "^2.6.14"
