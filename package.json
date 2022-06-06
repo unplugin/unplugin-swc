@@ -22,7 +22,7 @@
   },
   "license": "MIT",
   "dependencies": {
-    "unplugin": "^0.6.0"
+    "unplugin": "^0.7.0"
   },
   "devDependencies": {
     "@egoist/prettier-config": "1.0.0",
