@@ -30,7 +30,7 @@
     "@swc/core": "^1.2.108",
     "@types/node": "^17.0.23",
     "defu": "^6.0.0",
-    "esbuild": "0.14.9",
+    "esbuild": "0.14.47",
     "esbuild-register": "^3.1.2",
     "load-tsconfig": "^0.2.3",
     "path-exists": "^5.0.0",
