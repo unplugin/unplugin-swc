@@ -27,7 +27,7 @@ test("rollup", async () => {
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-var foo = 'foo';
+var foo = "foo";
 
 exports.foo = foo;
 `,
@@ -46,13 +46,13 @@ test("read tsconfig", async () => {
   })
 
   const code = output[0].code
-  assert.match(code, 'customJsxFactory')
+  assert.match(code, "customJsxFactory")
 
   // NOTE: use tsconfig.base.json which experimentalDecorators turned off will throw
   await rollup({
-    input: fixture('read-tsconfig/index.tsx'),
-    plugins: [swc.rollup({ tsconfigFile: 'tsconfig.base.json' })],
-  }).catch(e => assert.match(e.toString(), 'Unexpected token `@`.'))
+    input: fixture("read-tsconfig/index.tsx"),
+    plugins: [swc.rollup({ tsconfigFile: "tsconfig.base.json" })],
+  }).catch((e) => assert.match(e.toString(), "Unexpected token `@`."))
 })
 
 test("custom swcrc", async () => {

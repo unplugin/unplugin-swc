@@ -1,11 +1,11 @@
-import path from 'path'
-import defu from 'defu'
-import { createUnplugin } from 'unplugin'
-import { createFilter, FilterPattern } from '@rollup/pluginutils'
-import { loadTsConfig } from 'load-tsconfig'
+import path from "path"
+import defu from "defu"
+import { createUnplugin } from "unplugin"
+import { createFilter, FilterPattern } from "@rollup/pluginutils"
+import { loadTsConfig } from "load-tsconfig"
 
-import { transform, JscConfig, Options as SwcOptions } from '@swc/core'
-import { resolveId } from './resolve'
+import { transform, JscConfig, Options as SwcOptions } from "@swc/core"
+import { resolveId } from "./resolve"
 
 export type Options = SwcOptions & {
   include?: FilterPattern
@@ -21,7 +21,7 @@ export default createUnplugin(
     )
 
     return {
-      name: 'swc',
+      name: "swc",
 
       resolveId,
 
@@ -40,16 +40,16 @@ export default createUnplugin(
 
         let jsc: JscConfig = {
           parser: {
-            syntax: isTs ? 'typescript' : 'ecmascript',
+            syntax: isTs ? "typescript" : "ecmascript",
           },
           transform: {},
         }
 
         if (compilerOptions.jsx) {
-          Object.assign(jsc.parser, {
-            [isTs ? 'tsx' : 'jsx']: true,
+          Object.assign(jsc.parser || {}, {
+            [isTs ? "tsx" : "jsx"]: true,
           })
-          Object.assign(jsc.transform, {
+          Object.assign(jsc.transform || {}, {
             react: {
               pragma: compilerOptions.jsxFactory,
               pragmaFrag: compilerOptions.jsxFragmentFactory,
@@ -61,10 +61,10 @@ export default createUnplugin(
         if (compilerOptions.experimentalDecorators) {
           // class name is required by type-graphql to generate correct graphql type
           jsc.keepClassNames = true
-          Object.assign(jsc.parser, {
+          Object.assign(jsc.parser || {}, {
             decorators: true,
           })
-          Object.assign(jsc.transform, {
+          Object.assign(jsc.transform || {}, {
             legacyDecorator: true,
             decoratorMetadata: compilerOptions.emitDecoratorMetadata,
           })

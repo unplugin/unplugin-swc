@@ -16,32 +16,32 @@
     }
   },
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "build": "tsup src/index.ts --format cjs,esm --dts --shims",
     "test": "npm run build && uvu -r esbuild-register --ignore fixtures",
     "prepublishOnly": "npm run build"
   },
   "license": "MIT",
   "dependencies": {
-    "unplugin": "^0.6.0"
+    "unplugin": "^0.9.4"
   },
   "devDependencies": {
     "@egoist/prettier-config": "1.0.0",
-    "@rollup/pluginutils": "^4.1.1",
-    "@swc/core": "^1.2.108",
-    "@types/node": "^17.0.23",
+    "@rollup/pluginutils": "^4.2.1",
+    "@swc/core": "^1.2.242",
+    "@types/node": "^18.7.11",
     "defu": "^6.0.0",
-    "esbuild": "0.14.9",
-    "esbuild-register": "^3.1.2",
+    "esbuild": "0.15.5",
+    "esbuild-register": "^3.3.3",
     "load-tsconfig": "^0.2.3",
     "path-exists": "^5.0.0",
-    "prettier": "2.5.1",
-    "rollup": "^2.60.0",
-    "tsup": "5.12.5",
-    "typescript": "4.5.4",
-    "uvu": "^0.5.2",
-    "vite": "^2.6.14"
+    "prettier": "2.7.1",
+    "rollup": "^2.78.1",
+    "tsup": "6.2.2",
+    "typescript": "4.7.4",
+    "uvu": "^0.5.6",
+    "vite": "^3.0.9"
   },
   "peerDependencies": {
-    "@swc/core": "^1.2.108"
+    "@swc/core": ">=1.2.242"
   }
 }
