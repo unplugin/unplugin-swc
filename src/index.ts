@@ -1,11 +1,11 @@
-import path from 'path'
-import defu from 'defu'
-import { createUnplugin } from 'unplugin'
-import { createFilter, FilterPattern } from '@rollup/pluginutils'
-import { loadTsConfig } from 'load-tsconfig'
+import path from "path"
+import defu from "defu"
+import { createUnplugin } from "unplugin"
+import { createFilter, FilterPattern } from "@rollup/pluginutils"
+import { loadTsConfig } from "load-tsconfig"
 
-import { transform, JscConfig, Options as SwcOptions } from '@swc/core'
-import { resolveId } from './resolve'
+import { transform, JscConfig, Options as SwcOptions } from "@swc/core"
+import { resolveId } from "./resolve.js"
 
 export type Options = SwcOptions & {
   include?: FilterPattern
@@ -21,7 +21,7 @@ export default createUnplugin(
     )
 
     return {
-      name: 'swc',
+      name: "swc",
 
       resolveId,
 
@@ -40,14 +40,14 @@ export default createUnplugin(
 
         let jsc: JscConfig = {
           parser: {
-            syntax: isTs ? 'typescript' : 'ecmascript',
+            syntax: isTs ? "typescript" : "ecmascript",
           },
           transform: {},
         }
 
         if (compilerOptions.jsx) {
           Object.assign(jsc.parser, {
-            [isTs ? 'tsx' : 'jsx']: true,
+            [isTs ? "tsx" : "jsx"]: true,
           })
           Object.assign(jsc.transform, {
             react: {

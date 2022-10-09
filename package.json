@@ -2,41 +2,47 @@
   "name": "unplugin-swc",
   "version": "0.0.0",
   "description": "SWC plugin for Vite and Rollup",
+  "packageManager": "pnpm@7.13.3",
   "publishConfig": {
     "access": "public"
   },
   "files": [
     "dist"
   ],
+  "browserslist": [
+    "node >= 12"
+  ],
+  "type": "module",
+  "source": "./src/index.ts",
+  "main": "./dist/index.cjs",
   "types": "./dist/index.d.ts",
   "exports": {
-    ".": {
-      "import": "./dist/index.mjs",
-      "default": "./dist/index.js"
-    }
+    "require": "./dist/index.cjs",
+    "import": "./dist/index.modern.js"
   },
   "scripts": {
-    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "clean": "rm -rf ./dist/**",
+    "build": "npm run clean && microbundle -f modern,cjs --compress false --target node",
     "test": "npm run build && uvu -r esbuild-register --ignore fixtures",
     "prepublishOnly": "npm run build"
   },
   "license": "MIT",
   "dependencies": {
+    "@rollup/pluginutils": "^4.1.1",
+    "defu": "^6.0.0",
+    "load-tsconfig": "^0.2.3",
     "unplugin": "^0.6.0"
   },
   "devDependencies": {
     "@egoist/prettier-config": "1.0.0",
-    "@rollup/pluginutils": "^4.1.1",
     "@swc/core": "^1.2.108",
     "@types/node": "^17.0.23",
-    "defu": "^6.0.0",
     "esbuild": "0.14.9",
     "esbuild-register": "^3.1.2",
-    "load-tsconfig": "^0.2.3",
+    "microbundle": "^0.15.1",
     "path-exists": "^5.0.0",
     "prettier": "2.5.1",
     "rollup": "^2.60.0",
-    "tsup": "5.12.5",
     "typescript": "4.5.4",
     "uvu": "^0.5.2",
     "vite": "^2.6.14"
