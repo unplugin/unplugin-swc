@@ -55,7 +55,7 @@ swc.vite({
 
 // It's also possible to use a custom tsconfig file instead of tsconfig.json
 swc.vite({
-  tsconfigFile: './tsconfig.build.json',
+  tsconfigFile: "./tsconfig.build.json",
 })
 ```
 

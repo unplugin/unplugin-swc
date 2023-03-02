@@ -1,8 +1,7 @@
-import { test } from "uvu"
-import assert from "uvu/assert"
 import path from "path"
-import swc from "../dist"
 import { rollup } from "rollup"
+import { expect, test } from "vitest"
+import swc from "../dist"
 
 const fixture = (...args: string[]) => path.join(__dirname, "fixtures", ...args)
 
@@ -21,17 +20,14 @@ test("rollup", async () => {
     dir: fixture("rollup/dist"),
   })
 
-  assert.is(
-    output[0].code,
-    `'use strict';
+  expect(output[0].code).toMatchInlineSnapshot(`
+    "'use strict';
 
-Object.defineProperty(exports, '__esModule', { value: true });
+    var foo = \\"foo\\";
 
-var foo = 'foo';
-
-exports.foo = foo;
-`,
-  )
+    exports.foo = foo;
+    "
+  `)
 })
 
 test("read tsconfig", async () => {
@@ -46,13 +42,15 @@ test("read tsconfig", async () => {
   })
 
   const code = output[0].code
-  assert.match(code, 'customJsxFactory')
+  expect(code).toMatch("customJsxFactory")
 
   // NOTE: use tsconfig.base.json which experimentalDecorators turned off will throw
   await rollup({
-    input: fixture('read-tsconfig/index.tsx'),
-    plugins: [swc.rollup({ tsconfigFile: 'tsconfig.base.json' })],
-  }).catch(e => assert.match(e.toString(), 'Unexpected token `@`.'))
+    input: fixture("read-tsconfig/index.tsx"),
+    plugins: [swc.rollup({ tsconfigFile: "tsconfig.base.json" })],
+  }).catch((e) => {
+    expect(e.toString()).toMatch("Expression expected")
+  })
 })
 
 test("custom swcrc", async () => {
@@ -71,7 +69,16 @@ test("custom swcrc", async () => {
   })
 
   const code = output[0].code
-  assert.match(code, "customPragma")
+  expect(code).toMatchInlineSnapshot(`
+    "'use strict';
+
+    var App = function() {
+        return /*#__PURE__*/ customPragma(\\"div\\", null, \\"hi\\");
+    };
+
+    exports.App = App;
+    "
+  `)
 })
 
 test("minify", async () => {
@@ -90,11 +97,8 @@ test("minify", async () => {
   })
 
   const code = output[0].code
-  console.log(code)
-  assert.match(
-    code,
-    `var Foo=function Foo(){_classCallCheck(this,Foo);this.a=1}`,
-  )
+  expect(code).toMatchInlineSnapshot(`
+    "\\"use strict\\";function _classCallCheck(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError(\\"Cannot call a class as a function\\")}}var Foo=function Foo(){_classCallCheck(this,Foo);this.a=1};exports.Foo=Foo;
+    "
+  `)
 })
-
-test.run()
