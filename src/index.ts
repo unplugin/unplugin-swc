@@ -1,29 +1,34 @@
-import { createFilter } from '@rollup/pluginutils'
-import defu from 'defu'
-import { loadTsConfig } from 'load-tsconfig'
-import path from 'path'
-import { createUnplugin } from 'unplugin'
+import path from "path"
+import defu from "defu"
+import { createUnplugin } from "unplugin"
+import { createFilter } from "@rollup/pluginutils"
+import { loadTsConfig } from "load-tsconfig"
+import { JscConfig, Options as SwcOptions, transform } from "@swc/core"
+import { resolveId } from "./resolve"
 
-import { JscConfig, Options as SwcOptions, transform } from '@swc/core'
-import { resolveId } from './resolve'
+type FilterPattern = ReadonlyArray<string | RegExp> | string | RegExp | null
 
-type FilterPattern = ReadonlyArray<string | RegExp> | string | RegExp | null;
-
-export interface UnpluginSwcOptions extends Omit<SwcOptions, 'exclude'> {
+export interface UnpluginSwcOptions extends Omit<SwcOptions, "exclude"> {
   include?: FilterPattern
   exclude?: FilterPattern
   tsconfigFile?: string | boolean
 }
 
 export default createUnplugin(
-  ({ tsconfigFile, minify, include, exclude, ...options }: UnpluginSwcOptions = {}) => {
+  ({
+    tsconfigFile,
+    minify,
+    include,
+    exclude,
+    ...options
+  }: UnpluginSwcOptions = {}) => {
     const filter = createFilter(
       include || /\.[jt]sx?$/,
       exclude || /node_modules/,
     )
 
     return {
-      name: 'swc',
+      name: "swc",
 
       resolveId,
 
@@ -42,14 +47,14 @@ export default createUnplugin(
 
         let jsc: JscConfig = {
           parser: {
-            syntax: isTs ? 'typescript' : 'ecmascript',
+            syntax: isTs ? "typescript" : "ecmascript",
           },
           transform: {},
         }
 
         if (compilerOptions.jsx) {
           Object.assign(jsc.parser || {}, {
-            [isTs ? 'tsx' : 'jsx']: true,
+            [isTs ? "tsx" : "jsx"]: true,
           })
           Object.assign(jsc.transform || {}, {
             react: {

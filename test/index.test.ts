@@ -42,14 +42,14 @@ test("read tsconfig", async () => {
   })
 
   const code = output[0].code
-  expect(code).toMatch('customJsxFactory')
+  expect(code).toMatch("customJsxFactory")
 
   // NOTE: use tsconfig.base.json which experimentalDecorators turned off will throw
   await rollup({
-    input: fixture('read-tsconfig/index.tsx'),
-    plugins: [swc.rollup({ tsconfigFile: 'tsconfig.base.json' })],
-  }).catch(e => {
-    expect(e.toString()).toMatch('Expression expected')
+    input: fixture("read-tsconfig/index.tsx"),
+    plugins: [swc.rollup({ tsconfigFile: "tsconfig.base.json" })],
+  }).catch((e) => {
+    expect(e.toString()).toMatch("Expression expected")
   })
 })
 

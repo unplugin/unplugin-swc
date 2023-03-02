@@ -1,12 +1,10 @@
-import { defineBuildConfig } from "unbuild";
+import { defineBuildConfig } from "unbuild"
 
 export default defineBuildConfig({
   declaration: true,
-  entries: [
-    "./src/index"
-  ],
+  entries: ["./src/index"],
   rollup: {
     inlineDependencies: true,
-    emitCJS: true
-  }
-});
+    emitCJS: true,
+  },
+})
