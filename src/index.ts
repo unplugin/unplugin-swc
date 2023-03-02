@@ -1,20 +1,22 @@
-import path from 'path'
+import { createFilter } from '@rollup/pluginutils'
 import defu from 'defu'
-import { createUnplugin } from 'unplugin'
-import { createFilter, FilterPattern } from '@rollup/pluginutils'
 import { loadTsConfig } from 'load-tsconfig'
+import path from 'path'
+import { createUnplugin } from 'unplugin'
 
-import { transform, JscConfig, Options as SwcOptions } from '@swc/core'
+import { JscConfig, Options as SwcOptions, transform } from '@swc/core'
 import { resolveId } from './resolve'
 
-export type Options = SwcOptions & {
+type FilterPattern = ReadonlyArray<string | RegExp> | string | RegExp | null;
+
+export interface UnpluginSwcOptions extends Omit<SwcOptions, 'exclude'> {
   include?: FilterPattern
   exclude?: FilterPattern
   tsconfigFile?: string | boolean
 }
 
 export default createUnplugin(
-  ({ tsconfigFile, minify, include, exclude, ...options }: Options = {}) => {
+  ({ tsconfigFile, minify, include, exclude, ...options }: UnpluginSwcOptions = {}) => {
     const filter = createFilter(
       include || /\.[jt]sx?$/,
       exclude || /node_modules/,
@@ -46,10 +48,10 @@ export default createUnplugin(
         }
 
         if (compilerOptions.jsx) {
-          Object.assign(jsc.parser, {
+          Object.assign(jsc.parser || {}, {
             [isTs ? 'tsx' : 'jsx']: true,
           })
-          Object.assign(jsc.transform, {
+          Object.assign(jsc.transform || {}, {
             react: {
               pragma: compilerOptions.jsxFactory,
               pragmaFrag: compilerOptions.jsxFragmentFactory,
@@ -61,10 +63,10 @@ export default createUnplugin(
         if (compilerOptions.experimentalDecorators) {
           // class name is required by type-graphql to generate correct graphql type
           jsc.keepClassNames = true
-          Object.assign(jsc.parser, {
+          Object.assign(jsc.parser || {}, {
             decorators: true,
           })
-          Object.assign(jsc.transform, {
+          Object.assign(jsc.transform || {}, {
             legacyDecorator: true,
             decoratorMetadata: compilerOptions.emitDecoratorMetadata,
           })
