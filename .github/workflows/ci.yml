@@ -10,6 +10,25 @@ permissions:
   contents: read # for checkout
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v3
+
+      - run: corepack enable
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+
+      - name: Install deps
+        run: pnpm i
+
+      - name: Lint
+        run: pnpm lint
+
   test:
     strategy:
       matrix:
@@ -43,7 +62,7 @@ jobs:
         run: npm run test
 
   release:
-    needs: test
+    needs: [lint, test]
     if: github.ref == 'refs/heads/main' && github.event_name == 'push'
     runs-on: ubuntu-latest
     permissions:
