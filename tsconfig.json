@@ -11,5 +11,5 @@
     "allowJs": true,
     "resolveJsonModule": true
   },
-  "exclude": ["dist"]
+  "exclude": ["dist", "test/fixtures"]
 }

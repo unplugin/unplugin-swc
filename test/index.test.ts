@@ -1,13 +1,13 @@
-import path from "path"
-import { rollup } from "rollup"
-import { expect, test } from "vitest"
-import swc from "../dist"
+import path from 'path'
+import { rollup } from 'rollup'
+import { expect, test } from 'vitest'
+import swc from '../dist'
 
-const fixture = (...args: string[]) => path.join(__dirname, "fixtures", ...args)
+const fixture = (...args: string[]) => path.join(__dirname, 'fixtures', ...args)
 
-test("rollup", async () => {
+test('rollup', async() => {
   const bundle = await rollup({
-    input: fixture("rollup/index.ts"),
+    input: fixture('rollup/index.ts'),
     plugins: [
       swc.rollup({
         tsconfigFile: false,
@@ -16,12 +16,12 @@ test("rollup", async () => {
   })
 
   const { output } = await bundle.generate({
-    format: "cjs",
-    dir: fixture("rollup/dist"),
+    format: 'cjs',
+    dir: fixture('rollup/dist'),
   })
 
   expect(
-    output[0].code
+    output[0].code,
   ).toMatchInlineSnapshot(`
     "'use strict';
 
@@ -34,15 +34,15 @@ test("rollup", async () => {
   `)
 })
 
-test("read tsconfig", async () => {
+test('read tsconfig', async() => {
   const bundle = await rollup({
-    input: fixture("read-tsconfig/index.tsx"),
+    input: fixture('read-tsconfig/index.tsx'),
     plugins: [swc.rollup()],
   })
 
   const { output } = await bundle.generate({
-    format: "cjs",
-    dir: fixture("read-tsconfig/dist"),
+    format: 'cjs',
+    dir: fixture('read-tsconfig/dist'),
   })
 
   const code = output[0].code
@@ -55,9 +55,9 @@ test("read tsconfig", async () => {
   }).catch(e => expect(e.toString()).toMatch('Unexpected token `@`.'))
 })
 
-test("custom swcrc", async () => {
+test('custom swcrc', async() => {
   const bundle = await rollup({
-    input: fixture("custom-swcrc/index.tsx"),
+    input: fixture('custom-swcrc/index.tsx'),
     plugins: [
       swc.rollup({
         tsconfigFile: false,
@@ -66,17 +66,17 @@ test("custom swcrc", async () => {
   })
 
   const { output } = await bundle.generate({
-    format: "cjs",
-    dir: fixture("custom-swcrc/dist"),
+    format: 'cjs',
+    dir: fixture('custom-swcrc/dist'),
   })
 
   const code = output[0].code
-  expect(code).toMatch("customPragma")
+  expect(code).toMatch('customPragma')
 })
 
-test("minify", async () => {
+test('minify', async() => {
   const bundle = await rollup({
-    input: fixture("minify/index.ts"),
+    input: fixture('minify/index.ts'),
     plugins: [
       swc.rollup({
         minify: true,
@@ -85,10 +85,10 @@ test("minify", async () => {
   })
 
   const { output } = await bundle.generate({
-    format: "cjs",
-    dir: fixture("minify/dist"),
+    format: 'cjs',
+    dir: fixture('minify/dist'),
   })
 
   const code = output[0].code
-  expect(code).toMatch(`var Foo=function Foo(){_classCallCheck(this,Foo);this.a=1}`)
+  expect(code).toMatch('var Foo=function Foo(){_classCallCheck(this,Foo);this.a=1}')
 })

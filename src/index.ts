@@ -1,11 +1,12 @@
 import path from 'path'
-import defu from 'defu'
-import { createUnplugin } from 'unplugin'
-import { createFilter, FilterPattern } from '@rollup/pluginutils'
+import { transform } from '@swc/core'
+import { defu } from 'defu'
 import { loadTsConfig } from 'load-tsconfig'
-
-import { transform, JscConfig, Options as SwcOptions } from '@swc/core'
+import { createFilter } from '@rollup/pluginutils'
+import { createUnplugin } from 'unplugin'
 import { resolveId } from './resolve'
+import type { JscConfig, Options as SwcOptions } from '@swc/core'
+import type { FilterPattern } from '@rollup/pluginutils'
 
 export type Options = SwcOptions & {
   include?: FilterPattern
@@ -28,13 +29,13 @@ export default createUnplugin(
       async transform(code, id) {
         if (!filter(id)) return null
 
-        const compilerOptions =
-          tsconfigFile === false
+        const compilerOptions
+          = tsconfigFile === false
             ? {}
             : loadTsConfig(
-                path.dirname(id),
-                tsconfigFile === true ? undefined : tsconfigFile,
-              )?.data?.compilerOptions || {}
+              path.dirname(id),
+              tsconfigFile === true ? undefined : tsconfigFile,
+            )?.data?.compilerOptions || {}
 
         const isTs = /\.tsx?$/.test(id)
 
