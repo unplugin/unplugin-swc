@@ -7,6 +7,18 @@
     "access": "public"
   },
   "license": "MIT",
+  "author": "EGOIST <hi@egoist.dev> (https://github.com/egoist)",
+  "contributors": [
+    "hannoeru <me@hanlee.co> (https://github.com/hannoeru)"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hannoeru/unplugin-swc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/hannoeru/unplugin-swc/issues"
+  },
+  "homepage": "https://github.com/hannoeru/unplugin-swc/tree/main/#readme",
   "exports": {
     ".": {
       "import": {
