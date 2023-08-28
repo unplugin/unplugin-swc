@@ -19,6 +19,7 @@
     "url": "https://github.com/hannoeru/unplugin-swc/issues"
   },
   "homepage": "https://github.com/hannoeru/unplugin-swc/tree/main/#readme",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
       "import": {
