@@ -21,13 +21,13 @@ jobs:
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - run: corepack enable
 
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
-          node-version-file: ${{ matrix.node }}
+          node-version: ${{ matrix.node }}
           cache: pnpm
 
       - name: Install deps
@@ -53,11 +53,11 @@ jobs:
       pull-requests: write # to be able to comment on released pull requests
       id-token: write # to enable use of OIDC for npm provenance
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - run: corepack enable
 
-      - uses: actions/setup-node@v2
+      - uses: actions/setup-node@v3
         with:
           node-version-file: .nvmrc
           cache: pnpm
