@@ -1,12 +1,13 @@
 import path from 'path'
+import { createFilter } from '@rollup/pluginutils'
 import { transform } from '@swc/core'
 import { defu } from 'defu'
+// @ts-expect-error missing types
 import { loadTsConfig } from 'load-tsconfig'
-import { createFilter } from '@rollup/pluginutils'
 import { createUnplugin } from 'unplugin'
 import { resolveId } from './resolve'
-import type { JscConfig, Options as SwcOptions } from '@swc/core'
 import type { FilterPattern } from '@rollup/pluginutils'
+import type { JscConfig, Options as SwcOptions, TransformConfig } from '@swc/core'
 
 export type Options = SwcOptions & {
   include?: FilterPattern
@@ -14,8 +15,14 @@ export type Options = SwcOptions & {
   tsconfigFile?: string | boolean
 }
 
-export default createUnplugin(
-  ({ tsconfigFile, minify, include, exclude, ...options }: Options = {}) => {
+type WithRequiredProperty<Type, Key extends keyof Type> = Type & {
+  [Property in Key]-?: Type[Property];
+}
+
+type SWCOptions = WithRequiredProperty<JscConfig, 'parser' | 'transform'>
+
+export default createUnplugin<Options | undefined>(
+  ({ tsconfigFile, minify, include, exclude, ...options } = {}) => {
     const filter = createFilter(
       include || /\.[jt]sx?$/,
       exclude || /node_modules/,
@@ -39,7 +46,7 @@ export default createUnplugin(
 
         const isTs = /\.tsx?$/.test(id)
 
-        let jsc: JscConfig = {
+        let jsc: SWCOptions = {
           parser: {
             syntax: isTs ? 'typescript' : 'ecmascript',
           },
@@ -47,10 +54,12 @@ export default createUnplugin(
         }
 
         if (compilerOptions.jsx) {
-          Object.assign(jsc.parser, {
-            [isTs ? 'tsx' : 'jsx']: true,
-          })
-          Object.assign(jsc.transform, {
+          if (jsc.parser.syntax === 'typescript') {
+            jsc.parser.tsx = true
+          } else {
+            jsc.parser.jsx = true
+          }
+          Object.assign<TransformConfig, TransformConfig>(jsc.transform, {
             react: {
               pragma: compilerOptions.jsxFactory,
               pragmaFrag: compilerOptions.jsxFragmentFactory,
@@ -62,10 +71,8 @@ export default createUnplugin(
         if (compilerOptions.experimentalDecorators) {
           // class name is required by type-graphql to generate correct graphql type
           jsc.keepClassNames = true
-          Object.assign(jsc.parser, {
-            decorators: true,
-          })
-          Object.assign(jsc.transform, {
+          jsc.parser.decorators = true
+          Object.assign<TransformConfig, TransformConfig>(jsc.transform!, {
             legacyDecorator: true,
             decoratorMetadata: compilerOptions.emitDecoratorMetadata,
           })
@@ -76,7 +83,7 @@ export default createUnplugin(
         }
 
         if (options.jsc) {
-          jsc = defu(options.jsc, jsc)
+          jsc = defu<SWCOptions, SWCOptions[]>(options.jsc, jsc)
         }
 
         const result = await transform(code, {

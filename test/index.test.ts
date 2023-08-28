@@ -25,9 +25,7 @@ test('rollup', async() => {
   ).toMatchInlineSnapshot(`
     "'use strict';
 
-    Object.defineProperty(exports, '__esModule', { value: true });
-
-    var foo = 'foo';
+    var foo = \\"foo\\";
 
     exports.foo = foo;
     "
@@ -49,10 +47,26 @@ test('read tsconfig', async() => {
   expect(code).toMatch('customJsxFactory')
 
   // NOTE: use tsconfig.base.json which experimentalDecorators turned off will throw
-  await rollup({
+  expect(rollup({
     input: fixture('read-tsconfig/index.tsx'),
     plugins: [swc.rollup({ tsconfigFile: 'tsconfig.base.json' })],
-  }).catch(e => expect(e.toString()).toMatch('Unexpected token `@`.'))
+  })).rejects.toMatchInlineSnapshot(`
+    [Error: 
+      [38;2;255;30;30m×[0m Expression expected
+       ╭─[[38;2;92;157;255;1;4m/Users/hanlee/Projects/unplugin/unplugin-swc/test/fixtures/read-tsconfig/index.tsx[0m:1:1]
+     [2m1[0m │ function sealed(constructor: Function) {}
+     [2m2[0m │ 
+     [2m3[0m │ @sealed
+       · [38;2;246;87;248m─[0m
+     [2m4[0m │ export class BugReport {}
+     [2m5[0m │ 
+     [2m6[0m │ export const App = () => <div>hi</div>
+       ╰────
+
+
+    Caused by:
+        Syntax Error]
+  `)
 })
 
 test('custom swcrc', async() => {
@@ -90,5 +104,8 @@ test('minify', async() => {
   })
 
   const code = output[0].code
-  expect(code).toMatch('var Foo=function Foo(){_classCallCheck(this,Foo);this.a=1}')
+  expect(code).toMatchInlineSnapshot(`
+    "\\"use strict\\";function _class_call_check(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError(\\"Cannot call a class as a function\\")}}function _define_property(obj,key,value){if(key in obj){Object.defineProperty(obj,key,{value:value,enumerable:true,configurable:true,writable:true})}else{obj[key]=value}return obj}var Foo=function Foo(){_class_call_check(this,Foo);_define_property(this,\\"a\\",void 0);this.a=1};exports.Foo=Foo;
+    "
+  `)
 })
