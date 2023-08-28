@@ -11,5 +11,5 @@
     "allowJs": true,
     "resolveJsonModule": true
   },
-  "include": ["src", "*.ts"]
+  "exclude": ["fixtures"]
 }
