@@ -50,23 +50,7 @@ test('read tsconfig', async() => {
   expect(rollup({
     input: fixture('read-tsconfig/index.tsx'),
     plugins: [swc.rollup({ tsconfigFile: 'tsconfig.base.json' })],
-  })).rejects.toMatchInlineSnapshot(`
-    [Error: 
-      [38;2;255;30;30m×[0m Expression expected
-       ╭─[[38;2;92;157;255;1;4m/Users/hanlee/Projects/unplugin/unplugin-swc/test/fixtures/read-tsconfig/index.tsx[0m:1:1]
-     [2m1[0m │ function sealed(constructor: Function) {}
-     [2m2[0m │ 
-     [2m3[0m │ @sealed
-       · [38;2;246;87;248m─[0m
-     [2m4[0m │ export class BugReport {}
-     [2m5[0m │ 
-     [2m6[0m │ export const App = () => <div>hi</div>
-       ╰────
-
-
-    Caused by:
-        Syntax Error]
-  `)
+  })).rejects.toThrow('Syntax Error')
 })
 
 test('custom swcrc', async() => {
