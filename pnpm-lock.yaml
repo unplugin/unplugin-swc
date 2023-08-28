@@ -8,6 +8,9 @@ dependencies:
   '@rollup/pluginutils':
     specifier: ^5.0.4
     version: 5.0.4(rollup@3.28.1)
+  load-tsconfig:
+    specifier: ^0.2.5
+    version: 0.2.5
   unplugin:
     specifier: ^1.4.0
     version: 1.4.0
@@ -28,9 +31,6 @@ devDependencies:
   esbuild:
     specifier: 0.19.2
     version: 0.19.2
-  load-tsconfig:
-    specifier: ^0.2.5
-    version: 0.2.5
   path-exists:
     specifier: ^5.0.0
     version: 5.0.0
@@ -2826,7 +2826,6 @@ packages:
   /load-tsconfig@0.2.5:
     resolution: {integrity: sha512-IXO6OCs9yg8tMKzfPZ1YmheJbZCiEsnBdcB03l0OcfK9prKnJb96siuHCr5Fl37/yo9DnKU+TLpxzTUspw9shg==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
-    dev: true
 
   /local-pkg@0.4.3:
     resolution: {integrity: sha512-SFppqq5p42fe2qcZQqqEOiVRXl+WCP1MdT6k7BDEW1j++sp5fIY+/fdRQitvKgB5BrBcmrs5m/L0v2FrU5MY1g==}
