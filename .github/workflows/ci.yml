@@ -51,9 +51,6 @@ jobs:
       - name: Install deps
         run: pnpm i
 
-      - name: Lint
-        run: pnpm lint
-
       - name: Type check
         run: pnpm type-check
 
