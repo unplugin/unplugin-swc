@@ -1,4 +1,4 @@
-lockfileVersion: 5.3
+lockfileVersion: 5.4
 
 specifiers:
   '@egoist/prettier-config': 1.0.0
@@ -19,7 +19,7 @@ specifiers:
   vite: ^2.6.14
 
 dependencies:
-  unplugin: 0.6.1_64478a4c84ae07405dfe873711e54e2d
+  unplugin: 0.6.1_mrdyuteevyduaxp6q43rdzkofu
 
 devDependencies:
   '@egoist/prettier-config': 1.0.0
@@ -1534,7 +1534,7 @@ packages:
     hasBin: true
     dev: true
 
-  /unplugin/0.6.1_64478a4c84ae07405dfe873711e54e2d:
+  /unplugin/0.6.1_mrdyuteevyduaxp6q43rdzkofu:
     resolution: {integrity: sha512-cQqRCgQ2v/Q4fPIWNVZ6sNIDdl5v8JXOnlsUOsGzT4fblTONoPWaytiYSpu5qJ9lvSDZYAQN6BRVo3XQoZMfUQ==}
     peerDependencies:
       esbuild: '>=0.13'
