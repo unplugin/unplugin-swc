@@ -1,7 +1,3 @@
-**💛 You can help the author become a full-time open-source maintainer by [sponsoring him on GitHub](https://github.com/sponsors/egoist).**
-
----
-
 # unplugin-swc
 
 [![npm version](https://badgen.net/npm/v/unplugin-swc)](https://npm.im/unplugin-swc)
@@ -99,10 +95,6 @@ Files to exclude in the transpilation process.
 - Type: `object`
 
 Custom [jsc](https://swc.rs/docs/configuration/compilation) options to merge with the default one.
-
-## Sponsors
-
-[![sponsors](https://sponsors-images.egoist.sh/sponsors.svg)](https://github.com/sponsors/egoist)
 
 ## License
 
