@@ -1187,8 +1187,8 @@ packages:
       acorn: 8.11.2
     dev: true
 
-  /acorn-walk@8.3.1:
-    resolution: {integrity: sha512-TgUZgYvqZprrl7YldZNoa9OciCAyZR+Ejm9eXzKCmjsF5IKp/wgQ7Z/ZpjpGTIUPwrHQIcYeI8qDh4PsEwxMbw==}
+  /acorn-walk@8.3.2:
+    resolution: {integrity: sha512-cjkyv4OtNCIeqhHrfS81QWXoCBPExR/J62oyEqepVw8WaQeSqpW2uhuLPh1m9eWhDuOo/jUXVTlifvesOWp/4A==}
     engines: {node: '>=0.4.0'}
     dev: true
 
@@ -4173,7 +4173,7 @@ packages:
       '@vitest/spy': 0.34.6
       '@vitest/utils': 0.34.6
       acorn: 8.11.2
-      acorn-walk: 8.3.1
+      acorn-walk: 8.3.2
       cac: 6.7.14
       chai: 4.3.10
       debug: 4.3.4
