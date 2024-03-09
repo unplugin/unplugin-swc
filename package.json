@@ -53,7 +53,7 @@
   },
   "devDependencies": {
     "@hannoeru/eslint-config": "^0.9.7",
-    "@swc/core": "^1.4.5",
+    "@swc/core": "^1.4.6",
     "@types/node": "^20.11.24",
     "defu": "^6.1.4",
     "esbuild": "0.20.1",
