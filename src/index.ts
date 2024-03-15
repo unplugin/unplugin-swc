@@ -21,7 +21,7 @@ type WithRequiredProperty<Type, Key extends keyof Type> = Type & {
 
 type SWCOptions = WithRequiredProperty<JscConfig, 'parser' | 'transform'>
 
-export default createUnplugin<Options | undefined>(
+export default createUnplugin<Options | undefined, false>(
   ({ tsconfigFile, minify, include, exclude, ...options } = {}) => {
     const filter = createFilter(
       include || /\.[jt]sx?$/,
