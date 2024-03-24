@@ -2,7 +2,7 @@ import fs from 'fs'
 import path from 'path'
 import { pathExists } from 'path-exists'
 
-const RESOLVE_EXTENSIONS = ['.tsx', '.ts', '.jsx', '.js', '.mjs', '.cjs']
+const RESOLVE_EXTENSIONS = ['.tsx', '.ts', '.mts', '.jsx', '.js', '.mjs', '.cjs']
 
 const resolveFile = async(resolved: string, index = false) => {
   for (const ext of RESOLVE_EXTENSIONS) {
