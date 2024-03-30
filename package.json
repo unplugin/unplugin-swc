@@ -49,20 +49,20 @@
   "dependencies": {
     "@rollup/pluginutils": "^5.1.0",
     "load-tsconfig": "^0.2.5",
-    "unplugin": "^1.10.0"
+    "unplugin": "^1.10.1"
   },
   "devDependencies": {
     "@hannoeru/eslint-config": "^0.9.7",
     "@swc/core": "^1.4.11",
-    "@types/node": "^20.11.30",
+    "@types/node": "^20.12.2",
     "defu": "^6.1.4",
     "esbuild": "0.20.2",
     "path-exists": "^5.0.0",
     "prettier": "3.2.5",
-    "rollup": "^4.13.0",
+    "rollup": "^4.13.2",
     "tsup": "8.0.2",
     "typescript": "5.4.3",
-    "vite": "^5.2.6",
+    "vite": "^5.2.7",
     "vitest": "^0.34.6"
   }
 }
