@@ -1,4 +1,0 @@
-{
-  "extends": "@hannoeru",
-  "ignorePatterns": ["test/fixtures"]
-}
