@@ -25,7 +25,7 @@ test('rollup', async() => {
   ).toMatchInlineSnapshot(`
     "'use strict';
 
-    var foo = \\"foo\\";
+    var foo = 'foo';
 
     exports.foo = foo;
     "
@@ -89,7 +89,7 @@ test('minify', async() => {
 
   const code = output[0].code
   expect(code).toMatchInlineSnapshot(`
-    "\\"use strict\\";function _class_call_check(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError(\\"Cannot call a class as a function\\")}}function _define_property(obj,key,value){if(key in obj){Object.defineProperty(obj,key,{value:value,enumerable:true,configurable:true,writable:true})}else{obj[key]=value}return obj}var Foo=function Foo(){_class_call_check(this,Foo);_define_property(this,\\"a\\",void 0);this.a=1};exports.Foo=Foo;
+    ""use strict";function _class_call_check(instance,Constructor){if(!(instance instanceof Constructor)){throw new TypeError("Cannot call a class as a function")}}function _define_property(obj,key,value){if(key in obj){Object.defineProperty(obj,key,{value:value,enumerable:true,configurable:true,writable:true})}else{obj[key]=value}return obj}var Foo=function Foo(){_class_call_check(this,Foo);_define_property(this,"a",void 0);this.a=1};exports.Foo=Foo;
     "
   `)
 })
