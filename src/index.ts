@@ -1,13 +1,13 @@
-import path from 'path'
+import path from 'node:path'
 import { createFilter } from '@rollup/pluginutils'
 import { transform } from '@swc/core'
 import { defu } from 'defu'
 // @ts-expect-error missing types
 import { loadTsConfig } from 'load-tsconfig'
 import { createUnplugin } from 'unplugin'
-import { resolveId } from './resolve'
 import type { FilterPattern } from '@rollup/pluginutils'
 import type { JscConfig, Options as SwcOptions, TransformConfig } from '@swc/core'
+import { resolveId } from './resolve'
 
 export type Options = SwcOptions & {
   include?: FilterPattern
@@ -34,7 +34,8 @@ export default createUnplugin<Options | undefined, false>(
       resolveId,
 
       async transform(code, id) {
-        if (!filter(id)) return null
+        if (!filter(id))
+          return null
 
         const compilerOptions
           = tsconfigFile === false
@@ -56,7 +57,8 @@ export default createUnplugin<Options | undefined, false>(
         if (compilerOptions.jsx) {
           if (jsc.parser.syntax === 'typescript') {
             jsc.parser.tsx = true
-          } else {
+          }
+          else {
             jsc.parser.jsx = true
           }
           Object.assign<TransformConfig, TransformConfig>(jsc.transform, {

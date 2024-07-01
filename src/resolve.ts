@@ -1,21 +1,23 @@
-import fs from 'fs'
-import path from 'path'
+import fs from 'node:fs'
+import path from 'node:path'
 import { pathExists } from 'path-exists'
 
 const RESOLVE_EXTENSIONS = ['.tsx', '.ts', '.mts', '.jsx', '.js', '.mjs', '.cjs']
 
-const resolveFile = async(resolved: string, index = false) => {
+async function resolveFile(resolved: string, index = false) {
   for (const ext of RESOLVE_EXTENSIONS) {
     const file = index
       ? path.join(resolved, `index${ext}`)
       : `${resolved}${ext}`
-    if (await pathExists(file)) return file
+    if (await pathExists(file))
+      return file
   }
 }
 
-export const resolveId = async(importee: string, importer?: string) => {
+export async function resolveId(importee: string, importer?: string) {
   if (importer && importee[0] === '.') {
     const absolutePath = path.resolve(
+      // eslint-disable-next-line node/prefer-global/process
       importer ? path.dirname(importer) : process.cwd(),
       importee,
     )

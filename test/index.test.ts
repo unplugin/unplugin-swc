@@ -1,11 +1,11 @@
-import path from 'path'
+import path from 'node:path'
 import { rollup } from 'rollup'
-import { expect, test } from 'vitest'
-import swc from '../dist'
+import { expect, it } from 'vitest'
+import swc from '../src'
 
 const fixture = (...args: string[]) => path.join(__dirname, 'fixtures', ...args)
 
-test('rollup', async() => {
+it('rollup', async () => {
   const bundle = await rollup({
     input: fixture('rollup/index.ts'),
     plugins: [
@@ -32,7 +32,7 @@ test('rollup', async() => {
   `)
 })
 
-test('read tsconfig', async() => {
+it('read tsconfig', async () => {
   const bundle = await rollup({
     input: fixture('read-tsconfig/index.tsx'),
     plugins: [swc.rollup()],
@@ -53,7 +53,7 @@ test('read tsconfig', async() => {
   })).rejects.toThrow('Syntax Error')
 })
 
-test('custom swcrc', async() => {
+it('custom swcrc', async () => {
   const bundle = await rollup({
     input: fixture('custom-swcrc/index.tsx'),
     plugins: [
@@ -72,7 +72,7 @@ test('custom swcrc', async() => {
   expect(code).toMatch('customPragma')
 })
 
-test('minify', async() => {
+it('minify', async () => {
   const bundle = await rollup({
     input: fixture('minify/index.ts'),
     plugins: [
