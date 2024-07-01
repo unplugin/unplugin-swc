@@ -24,7 +24,7 @@ type SWCOptions = WithRequiredProperty<JscConfig, 'parser' | 'transform'>
 export default createUnplugin<Options | undefined, false>(
   ({ tsconfigFile, minify, include, exclude, ...options } = {}) => {
     const filter = createFilter(
-      include || /\.[jt]sx?$/,
+      include || /\.m?[jt]sx?$/,
       exclude || /node_modules/,
     )
 
@@ -44,7 +44,7 @@ export default createUnplugin<Options | undefined, false>(
               tsconfigFile === true ? undefined : tsconfigFile,
             )?.data?.compilerOptions || {}
 
-        const isTs = /\.tsx?$/.test(id)
+        const isTs = /\.m?tsx?$/.test(id)
 
         let jsc: SWCOptions = {
           parser: {
