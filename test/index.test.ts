@@ -93,3 +93,44 @@ it('minify', async () => {
     "
   `)
 })
+
+it('useDefineForClassFields=false', async () => {
+  const bundle = await rollup({
+    input: fixture('class-fields/class-field.ts'),
+    plugins: [
+      swc.rollup({
+        tsconfigFile: false,
+        jsc: {
+          transform: {
+            useDefineForClassFields: false,
+          },
+        },
+      }),
+    ],
+  });
+
+  const { output } = await bundle.generate({
+    format: 'esm',
+    dir: fixture('class-fields/dist'),
+  });
+
+  const code = output[0].code;
+  expect(code).toContain("this.inlineProperty = 'value'"); // Ensure inline property is moved to constructor
+});
+
+it('useDefineForClassFields=false from tsconfig', async () => {
+  const bundle = await rollup({
+    input: fixture('class-fields/class-field.ts'),
+    plugins: [
+      swc.rollup(),
+    ],
+  });
+
+  const { output } = await bundle.generate({
+    format: 'esm',
+    dir: fixture('class-fields/dist'),
+  });
+
+  const code = output[0].code;
+  expect(code).toContain("this.inlineProperty = 'value'"); // Ensure inline property is moved to constructor
+});
