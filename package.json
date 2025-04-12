@@ -50,7 +50,7 @@
   "dependencies": {
     "@rollup/pluginutils": "^5.1.0",
     "load-tsconfig": "^0.2.5",
-    "unplugin": "^1.11.0"
+    "unplugin": "^2.3.2"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.21.2",
