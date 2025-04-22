@@ -1,3 +1,5 @@
+import type { FilterPattern } from '@rollup/pluginutils'
+import type { JscConfig, Options as SwcOptions, TransformConfig } from '@swc/core'
 import path from 'node:path'
 import { createFilter } from '@rollup/pluginutils'
 import { transform } from '@swc/core'
@@ -5,8 +7,6 @@ import { defu } from 'defu'
 // @ts-expect-error missing types
 import { loadTsConfig } from 'load-tsconfig'
 import { createUnplugin } from 'unplugin'
-import type { FilterPattern } from '@rollup/pluginutils'
-import type { JscConfig, Options as SwcOptions, TransformConfig } from '@swc/core'
 import { resolveId } from './resolve'
 
 export type Options = SwcOptions & {
