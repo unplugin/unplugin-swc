@@ -51,9 +51,7 @@ export default createUnplugin<Options | undefined, false>(
           parser: {
             syntax: isTs ? 'typescript' : 'ecmascript',
           },
-          transform: {
-            useDefineForClassFields: compilerOptions.useDefineForClassFields,
-          },
+          transform: {},
         }
 
         if (compilerOptions.jsx) {
@@ -84,6 +82,10 @@ export default createUnplugin<Options | undefined, false>(
 
         if (compilerOptions.target) {
           jsc.target = compilerOptions.target
+        }
+
+        if (compilerOptions.useDefineForClassFields != null) {
+          jsc.transform.useDefineForClassFields = compilerOptions.useDefineForClassFields
         }
 
         if (options.jsc) {
