@@ -84,6 +84,10 @@ export default createUnplugin<Options | undefined, false>(
           jsc.target = compilerOptions.target
         }
 
+        if (compilerOptions.useDefineForClassFields != null) {
+          jsc.transform.useDefineForClassFields = compilerOptions.useDefineForClassFields
+        }
+
         if (options.jsc) {
           jsc = defu<SWCOptions, SWCOptions[]>(options.jsc, jsc)
         }
