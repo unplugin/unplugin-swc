@@ -53,7 +53,7 @@
     "unplugin": "^2.3.4"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.13.1",
+    "@antfu/eslint-config": "^4.13.2",
     "@swc/core": "^1.11.22",
     "@types/node": "^22.15.21",
     "defu": "^6.1.4",
