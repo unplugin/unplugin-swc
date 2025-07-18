@@ -53,18 +53,18 @@
     "unplugin": "^2.3.5"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^4.16.2",
+    "@antfu/eslint-config": "^4.17.0",
     "@swc/core": "^1.12.14",
-    "@types/node": "^22.16.3",
+    "@types/node": "^22.16.4",
     "defu": "^6.1.4",
     "esbuild": "0.25.6",
     "eslint": "^9.31.0",
     "path-exists": "^5.0.0",
     "prettier": "3.6.2",
-    "rollup": "^4.45.0",
+    "rollup": "^4.45.1",
     "tsup": "8.5.0",
     "typescript": "5.8.3",
-    "vite": "^7.0.4",
+    "vite": "^7.0.5",
     "vitest": "^3.2.4"
   }
 }
