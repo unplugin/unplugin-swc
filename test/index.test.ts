@@ -111,3 +111,12 @@ it('useDefineForClassFields=false', async () => {
   // Ensure inline property is moved to constructor
   expect(code).toContain('this.inlineProperty = \'value\'')
 })
+
+it('json-import', async () => {
+  await expect(rollup({
+    input: fixture('json-import/json-import.ts'),
+    plugins: [
+      swc.rollup(),
+    ],
+  })).rejects.toThrow('  x Expected \';\', got \'with\'')
+})
