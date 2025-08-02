@@ -2,7 +2,7 @@
   "name": "unplugin-swc",
   "type": "module",
   "version": "0.0.0",
-  "packageManager": "pnpm@10.13.1",
+  "packageManager": "pnpm@10.14.0",
   "description": "SWC plugin for Vite and Rollup",
   "publishConfig": {
     "access": "public"
@@ -53,7 +53,7 @@
     "unplugin": "^2.3.5"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^5.0.0",
+    "@antfu/eslint-config": "^5.1.0",
     "@swc/core": "^1.13.3",
     "@types/node": "^22.17.0",
     "defu": "^6.1.4",
@@ -61,9 +61,9 @@
     "eslint": "^9.32.0",
     "path-exists": "^5.0.0",
     "prettier": "3.6.2",
-    "rollup": "^4.46.1",
+    "rollup": "^4.46.2",
     "tsup": "8.5.0",
-    "typescript": "5.8.3",
+    "typescript": "5.9.2",
     "vite": "^7.0.6",
     "vitest": "^3.2.4"
   }
