@@ -77,6 +77,9 @@ jobs:
           node-version-file: .nvmrc
           cache: pnpm
 
+      - name: Update npm
+        run: npm install -g npm@latest
+
       - name: Install deps
         run: pnpm i
 
