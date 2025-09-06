@@ -48,14 +48,14 @@
     "@swc/core": "^1.2.108"
   },
   "dependencies": {
-    "@rollup/pluginutils": "^5.2.0",
+    "@rollup/pluginutils": "^5.3.0",
     "load-tsconfig": "^0.2.5",
     "unplugin": "^2.3.10"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^5.2.1",
+    "@antfu/eslint-config": "^5.2.2",
     "@swc/core": "^1.13.5",
-    "@types/node": "^22.18.0",
+    "@types/node": "^22.18.1",
     "defu": "^6.1.4",
     "esbuild": "0.25.9",
     "eslint": "^9.34.0",
