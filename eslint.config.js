@@ -1,5 +1,2 @@
-import antfu from '@antfu/eslint-config'
-
-export default await antfu({
-  ignores: ['test/fixtures'],
-})
+import { sxzz } from "@sxzz/eslint-config";
+export default sxzz();

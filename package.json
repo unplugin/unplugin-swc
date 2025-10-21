@@ -53,8 +53,8 @@
     "unplugin": "^2.3.10"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^6.0.0",
     "@swc/core": "^1.13.20",
+    "@sxzz/eslint-config": "^7.2.7",
     "@types/node": "^22.18.11",
     "defu": "^6.1.4",
     "esbuild": "0.25.11",
