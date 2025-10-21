@@ -1,41 +1,41 @@
 {
   "name": "unplugin-swc",
-  "type": "module",
   "version": "0.0.0",
   "packageManager": "pnpm@10.18.3",
   "description": "SWC plugin for Vite and Rollup",
-  "publishConfig": {
-    "access": "public"
+  "type": "module",
+  "license": "MIT",
+  "homepage": "https://github.com/unplugin/unplugin-swc/tree/main/#readme",
+  "bugs": {
+    "url": "https://github.com/unplugin/unplugin-swc/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/unplugin/unplugin-swc.git"
   },
   "author": "EGOIST <hi@egoist.dev> (https://github.com/egoist)",
   "contributors": [
     "hannoeru <me@hanlee.co> (https://github.com/hannoeru)"
   ],
-  "license": "MIT",
-  "homepage": "https://github.com/unplugin/unplugin-swc/tree/main/#readme",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/unplugin/unplugin-swc.git"
-  },
-  "bugs": {
-    "url": "https://github.com/unplugin/unplugin-swc/issues"
-  },
-  "exports": {
-    ".": {
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/index.js"
-      },
-      "require": {
-        "types": "./dist/index.d.cts",
-        "default": "./dist/index.cjs"
-      }
-    }
-  },
-  "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "require": {
+        "types": "./dist/index.d.cts",
+        "default": "./dist/index.cjs"
+      },
+      "import": {
+        "types": "./dist/index.d.ts",
+        "default": "./dist/index.js"
+      }
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "build": "tsup",
     "test": "vitest",
