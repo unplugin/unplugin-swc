@@ -39,8 +39,8 @@
   "scripts": {
     "build": "tsup",
     "test": "vitest",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix",
+    "lint": "eslint --cache .",
+    "lint:fix": "pnpm run lint --fix",
     "prepublishOnly": "npm run build",
     "type-check": "tsc --noEmit"
   },
