@@ -22,7 +22,7 @@ importers:
         specifier: ^6.1.0
         version: 6.1.0(@vue/compiler-sfc@3.5.22)(eslint@9.38.0)(typescript@5.9.3)(vitest@4.0.4(@types/debug@4.1.12)(@types/node@24.9.2)(yaml@2.8.1))
       '@swc/core':
-        specifier: ^1.13.21
+        specifier: ^1.14.0
         version: 1.14.0
       '@types/node':
         specifier: ^24.9.2
