@@ -55,7 +55,7 @@ importers:
         specifier: ^7.2.2
         version: 7.2.2(@types/node@24.10.1)(yaml@2.8.1)
       vitest:
-        specifier: ^4.0.9
+        specifier: ^4.0.10
         version: 4.0.10(@types/debug@4.1.12)(@types/node@24.10.1)(yaml@2.8.1)
 
 packages:
