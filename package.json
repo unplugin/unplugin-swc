@@ -60,7 +60,7 @@
     "esbuild": "0.27.0",
     "eslint": "^9.39.1",
     "path-exists": "^5.0.0",
-    "prettier": "3.6.2",
+    "prettier": "3.7.3",
     "rollup": "^4.53.3",
     "tsup": "8.5.1",
     "typescript": "5.9.3",
