@@ -1,5 +1,6 @@
 import type { FilterPattern } from '@rollup/pluginutils'
-import type { JscConfig, Options as SwcOptions, TransformConfig } from '@swc/core'
+import type { JscConfig, JscTarget, Options as SwcOptions, TransformConfig } from '@swc/core'
+import type { CompilerOptions } from 'typescript'
 import path from 'node:path'
 import { createFilter } from '@rollup/pluginutils'
 import { transform } from '@swc/core'
@@ -37,7 +38,7 @@ export default createUnplugin<Options | undefined, false>(
         if (!filter(id))
           return null
 
-        const compilerOptions
+        const compilerOptions: CompilerOptions
           = tsconfigFile === false
             ? {}
             : loadTsConfig(
@@ -81,7 +82,7 @@ export default createUnplugin<Options | undefined, false>(
         }
 
         if (compilerOptions.target) {
-          jsc.target = compilerOptions.target
+          jsc.target = compilerOptions.target as unknown as JscTarget
         }
 
         if (compilerOptions.useDefineForClassFields != null) {
