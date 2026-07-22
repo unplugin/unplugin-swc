@@ -15,8 +15,8 @@ importers:
         specifier: ^0.2.5
         version: 0.2.5
       unplugin:
-        specifier: ^2.3.11
-        version: 2.3.11
+        specifier: ^3.3.0
+        version: 3.3.0(esbuild@0.28.1)(rollup@4.59.0)(vite@7.3.6(@types/node@24.10.1)(lightningcss@1.32.0)(yaml@2.8.2))
     devDependencies:
       '@antfu/eslint-config':
         specifier: ^6.2.0
@@ -2127,9 +2127,38 @@ packages:
   unist-util-visit@5.0.0:
     resolution: {integrity: sha512-MR04uvD+07cwl/yhVuVWAtw+3GOR/knlL55Nd/wAdblk27GCVt3lqpTivy/tkJcZoNPzTwS1Y+KMojlLDhoTzg==}
 
-  unplugin@2.3.11:
-    resolution: {integrity: sha512-5uKD0nqiYVzlmCRs01Fhs2BdkEgBS3SAVP6ndrBsuK42iC2+JHyxM05Rm9G8+5mkmRtzMZGY8Ct5+mliZxU/Ww==}
-    engines: {node: '>=18.12.0'}
+  unplugin@3.3.0:
+    resolution: {integrity: sha512-qa66K+crbfyE6JK10GjvbJeRrOsuC/JpbnHctfyp/i4oBTxWOzJfRZyDiOk1PtErMFRu8JhsU/wPvOdBNWe5Rg==}
+    engines: {node: ^20.19.0 || >=22.12.0}
+    peerDependencies:
+      '@farmfe/core': '*'
+      '@rspack/core': '*'
+      bun-types-no-globals: '*'
+      esbuild: '*'
+      rolldown: '*'
+      rollup: '*'
+      unloader: '*'
+      vite: '*'
+      webpack: '*'
+    peerDependenciesMeta:
+      '@farmfe/core':
+        optional: true
+      '@rspack/core':
+        optional: true
+      bun-types-no-globals:
+        optional: true
+      esbuild:
+        optional: true
+      rolldown:
+        optional: true
+      rollup:
+        optional: true
+      unloader:
+        optional: true
+      vite:
+        optional: true
+      webpack:
+        optional: true
 
   update-browserslist-db@1.1.4:
     resolution: {integrity: sha512-q0SPT4xyU84saUX+tomz1WLkxUbuaJnR1xWt17M7fJtEJigJeWUNGUqrauFXsHnqev9y9JTRGwk13tFBuKby4A==}
@@ -4354,12 +4383,15 @@ snapshots:
       unist-util-is: 6.0.1
       unist-util-visit-parents: 6.0.2
 
-  unplugin@2.3.11:
+  unplugin@3.3.0(esbuild@0.28.1)(rollup@4.59.0)(vite@7.3.6(@types/node@24.10.1)(lightningcss@1.32.0)(yaml@2.8.2)):
     dependencies:
       '@jridgewell/remapping': 2.3.5
-      acorn: 8.15.0
       picomatch: 4.0.4
       webpack-virtual-modules: 0.6.2
+    optionalDependencies:
+      esbuild: 0.28.1
+      rollup: 4.59.0
+      vite: 7.3.6(@types/node@24.10.1)(lightningcss@1.32.0)(yaml@2.8.2)
 
   update-browserslist-db@1.1.4(browserslist@4.28.0):
     dependencies:
