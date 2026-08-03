@@ -108,6 +108,7 @@ export default createUnplugin<Options | undefined, false>(
         config() {
           return {
             esbuild: false,
+            oxc, false,
           }
         },
       },
