@@ -1,3 +1,13 @@
+shellEmulator: true
+
+trustPolicy: no-downgrade
+
+overrides:
+  chokidar: ^5.0.0
+
+allowBuilds:
+  '@swc/core': true
+  esbuild: true
 onlyBuiltDependencies:
   - '@swc/core'
   - esbuild
