@@ -63,6 +63,10 @@ export default createUnplugin<Options | undefined, false>(
           }
           Object.assign<TransformConfig, TransformConfig>(jsc.transform, {
             react: {
+              runtime: compilerOptions.jsx === 'react-jsx' || compilerOptions.jsx === 'react-jsxdev'
+                ? 'automatic'
+                : 'classic',
+              development: compilerOptions.jsx === 'react-jsxdev' || undefined,
               pragma: compilerOptions.jsxFactory,
               pragmaFrag: compilerOptions.jsxFragmentFactory,
               importSource: compilerOptions.jsxImportSource,

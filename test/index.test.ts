@@ -53,6 +53,38 @@ it('read tsconfig', async () => {
   })).rejects.toThrow('Syntax Error')
 })
 
+it('uses the automatic JSX runtime from tsconfig', async () => {
+  const bundle = await rollup({
+    input: fixture('jsx-runtime/index.tsx'),
+    external: ['react/jsx-runtime'],
+    plugins: [swc.rollup()],
+  })
+
+  const { output } = await bundle.generate({
+    format: 'esm',
+    dir: fixture('jsx-runtime/dist'),
+  })
+
+  expect(output[0].code).toContain('react/jsx-runtime')
+  expect(output[0].code).not.toContain('React.createElement')
+})
+
+it('uses the automatic development JSX runtime from tsconfig', async () => {
+  const bundle = await rollup({
+    input: fixture('jsx-dev-runtime/index.tsx'),
+    external: ['react/jsx-dev-runtime'],
+    plugins: [swc.rollup()],
+  })
+
+  const { output } = await bundle.generate({
+    format: 'esm',
+    dir: fixture('jsx-dev-runtime/dist'),
+  })
+
+  expect(output[0].code).toContain('react/jsx-dev-runtime')
+  expect(output[0].code).not.toContain('React.createElement')
+})
+
 it('custom swcrc', async () => {
   const bundle = await rollup({
     input: fixture('custom-swcrc/index.tsx'),
