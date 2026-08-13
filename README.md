@@ -2,7 +2,7 @@
 
 [![npm version](https://badgen.net/npm/v/unplugin-swc)](https://npm.im/unplugin-swc)
 
-> [SWC](https://swc.rs/) plugin for Vite and Rollup.
+> [SWC](https://swc.rs/) plugin for Vite, Rollup, and Webpack.
 
 ## Install
 
