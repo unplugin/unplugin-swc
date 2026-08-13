@@ -51,25 +51,29 @@ it('webpack', async () => {
     plugins: [swc.webpack()],
   })
 
-  const stats = await new Promise<import('webpack').Stats>((resolve, reject) => {
-    compiler.run((error, compilation) => {
-      if (error)
-        reject(error)
-      else if (!compilation)
-        reject(new Error('Webpack did not produce compilation stats'))
-      else
-        resolve(compilation)
+  try {
+    const stats = await new Promise<import('webpack').Stats>((resolve, reject) => {
+      compiler.run((error, compilation) => {
+        if (error)
+          reject(error)
+        else if (!compilation)
+          reject(new Error('Webpack did not produce compilation stats'))
+        else
+          resolve(compilation)
+      })
     })
-  })
-  await new Promise<void>((resolve, reject) => {
-    compiler.close(error => error ? reject(error) : resolve())
-  })
 
-  expect(stats.hasErrors()).toBe(false)
-  const code = await fs.promises.readFile(path.join(outputPath, 'bundle.js'), 'utf8')
-  expect(code).toContain('var message = \'webpack\'')
-  expect(code).not.toContain(': string')
-  expect(code).not.toContain('?.')
+    expect(stats.hasErrors()).toBe(false)
+    const code = await fs.promises.readFile(path.join(outputPath, 'bundle.js'), 'utf8')
+    expect(code).toContain('var message = \'webpack\'')
+    expect(code).not.toContain(': string')
+    expect(code).not.toContain('?.')
+  }
+  finally {
+    await new Promise<void>((resolve, reject) => {
+      compiler.close(error => error ? reject(error) : resolve())
+    })
+  }
 })
 
 it('read tsconfig', async () => {
