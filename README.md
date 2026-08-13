@@ -37,6 +37,8 @@ Following SWC options are inferred from `tsconfig.json`:
 - `jsc.transform.react.pragma`: `compilerOptions.jsxFactory`
 - `jsc.transform.react.pragmaFrag`: `compilerOptions.jsxFragmentFactory`
 - `jsc.transform.react.importSource`: `compilerOptions.jsxImportSource`
+- `jsc.transform.react.runtime`: `automatic` for `compilerOptions.jsx: "react-jsx"` or `"react-jsxdev"`; otherwise `classic`
+- `jsc.transform.react.development`: enabled for `compilerOptions.jsx: "react-jsxdev"`
 - `jsc.transform.legacyDecorator`: `compilerOptions.experimentalDecorators`
 - `jsc.transform.decoratorMetadata`: `compilerOptions.emitDecoratorMetadata`
 - `jsc.keepClassNames`: when decorator is enabled, because original class name is required by libs like `type-graphql` to generate correct graphql type
