@@ -58,7 +58,7 @@
     "@types/node": "^26.2.0",
     "defu": "^6.1.7",
     "esbuild": "0.28.2",
-    "eslint": "^10.8.1",
+    "eslint": "^10.9.0",
     "path-exists": "^5.0.0",
     "prettier": "3.9.6",
     "rollup": "^4.62.5",
