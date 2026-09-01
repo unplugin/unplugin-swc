@@ -1,6 +1,8 @@
+import fs from 'node:fs'
 import path from 'node:path'
 import { rollup } from 'rollup'
 import { expect, it } from 'vitest'
+import { webpack } from 'webpack'
 import swc from '../src'
 
 const fixture = (...args: string[]) => path.join(__dirname, 'fixtures', ...args)
@@ -30,6 +32,48 @@ it('rollup', async () => {
     exports.foo = foo;
     "
   `)
+})
+
+it('webpack', async () => {
+  const outputPath = fixture('webpack/dist')
+  const compiler = webpack({
+    mode: 'development',
+    target: 'node',
+    entry: fixture('webpack/index.ts'),
+    output: {
+      clean: true,
+      filename: 'bundle.js',
+      path: outputPath,
+    },
+    resolve: {
+      extensions: ['.js'],
+    },
+    plugins: [swc.webpack()],
+  })
+
+  try {
+    const stats = await new Promise<import('webpack').Stats>((resolve, reject) => {
+      compiler.run((error, compilation) => {
+        if (error)
+          reject(error)
+        else if (!compilation)
+          reject(new Error('Webpack did not produce compilation stats'))
+        else
+          resolve(compilation)
+      })
+    })
+
+    expect(stats.hasErrors()).toBe(false)
+    const code = await fs.promises.readFile(path.join(outputPath, 'bundle.js'), 'utf8')
+    expect(code).toContain('var message = \'webpack\'')
+    expect(code).not.toContain(': string')
+    expect(code).not.toContain('?.')
+  }
+  finally {
+    await new Promise<void>((resolve, reject) => {
+      compiler.close(error => error ? reject(error) : resolve())
+    })
+  }
 })
 
 it('read tsconfig', async () => {

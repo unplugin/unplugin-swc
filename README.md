@@ -2,7 +2,7 @@
 
 [![npm version](https://badgen.net/npm/v/unplugin-swc)](https://npm.im/unplugin-swc)
 
-> [SWC](https://swc.rs/) plugin for Vite and Rollup.
+> [SWC](https://swc.rs/) plugin for Vite, Rollup, and Webpack.
 
 ## Install
 
@@ -12,7 +12,7 @@ npm i unplugin-swc @swc/core -D
 
 ## Usage
 
-Vite or Rollup:
+Vite, Rollup, or Webpack:
 
 ```ts
 import swc from 'unplugin-swc'
@@ -23,6 +23,8 @@ export default {
     swc.vite(),
     // Rollup plugin
     swc.rollup(),
+    // Webpack plugin
+    swc.webpack(),
   ],
 }
 ```
@@ -59,7 +61,7 @@ swc.vite({
 
 ### Minification
 
-Use the `minify: true` option, it only works for Rollup as Vite uses esbuild to minify the code and cannot be changed.
+Use the `minify: true` option. It only works for Rollup. Vite uses esbuild to minify code, and Webpack minification is not supported.
 
 To have advanced control over the minification process, [use `jsc.minify` option in `.swcrc`](https://swc.rs/docs/configuration/minification).
 
