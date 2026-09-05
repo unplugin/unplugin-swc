@@ -2,7 +2,7 @@
   "name": "unplugin-swc",
   "type": "module",
   "version": "0.0.0",
-  "packageManager": "pnpm@11.24.0",
+  "packageManager": "pnpm@12.3.4",
   "description": "SWC plugin for Vite and Rollup",
   "publishConfig": {
     "access": "public"
