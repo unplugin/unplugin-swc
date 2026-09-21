@@ -4,6 +4,10 @@
 
 > [SWC](https://swc.rs/) plugin for Vite, Rollup, and Webpack.
 
+## Requirements
+
+- Node.js `^20.19.0` or `>=22.12.0`
+
 ## Install
 
 ```bash
