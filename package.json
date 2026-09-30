@@ -57,7 +57,7 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^9.3.0",
-    "@swc/core": "^1.16.2",
+    "@swc/core": "^1.16.13",
     "@types/node": "^26.4.0",
     "defu": "^6.1.7",
     "esbuild": "0.28.2",
