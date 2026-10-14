@@ -65,7 +65,7 @@
     "path-exists": "^5.0.0",
     "prettier": "3.9.10",
     "rollup": "^4.63.1",
-    "tsup": "8.5.1",
+    "tsup": "9.0.0",
     "typescript": "6.0.3",
     "vite": "^8.2.2",
     "vitest": "^4.1.11",
