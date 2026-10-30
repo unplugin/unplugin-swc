@@ -56,7 +56,7 @@
     "unplugin": "^3.3.0"
   },
   "devDependencies": {
-    "@antfu/eslint-config": "^9.3.0",
+    "@antfu/eslint-config": "^10.0.0",
     "@swc/core": "^1.16.20",
     "@types/node": "^26.4.0",
     "defu": "^6.1.7",
